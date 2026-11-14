@@ -1,3 +1,4 @@
+#Dockerfile — это инструкция, по которой Docker собирает образ приложения.
 # Этап 1: сборка
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build   # образ с SDK для сборки
 WORKDIR /src                                      # рабочая папка
