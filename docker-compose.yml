@@ -1,0 +1,41 @@
+services:
+  # API на .NET: собирается из Dockerfile в текущей папке
+  api:
+    build: .
+    container_name: notes-api
+    ports:
+      - "8080:8080"            # порт_компьютера:порт_контейнера
+    environment:
+      # Host=db — это имя сервиса базы данных ниже (не localhost!)
+      - CONNECTION_STRING=Host=db;Port=5432;Database=app;Username=postgres;Password=1234
+    depends_on:
+      db:
+        condition: service_healthy   # запускать API, когда PostgreSQL уже принимает подключения
+    networks:
+      - notes-net
+
+  # База данных PostgreSQL
+  db:
+    image: postgres:16
+    container_name: notes-db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=app
+    volumes:
+      - db_data:/var/lib/postgresql/data   # данные базы переживают удаление контейнера
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d app"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - notes-net
+
+# Общая сеть: сервисы обращаются друг к другу по имени (api -> db)
+networks:
+  notes-net:
+
+# Named volume, который Docker создаёт и хранит отдельно от контейнеров
+volumes:
+  db_data:

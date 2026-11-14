@@ -1,0 +1,64 @@
+notes-api  | info: Microsoft.Hosting.Lifetime[14]
+notes-api  |       Now listening on: http://[::]:8080
+notes-api  | info: Microsoft.Hosting.Lifetime[0]
+notes-api  |       Application started. Press Ctrl+C to shut down.
+notes-api  | info: Microsoft.Hosting.Lifetime[0]
+notes-api  |       Hosting environment: Production
+notes-api  | info: Program[0]
+notes-api  |       База данных готова, таблица notes создана или уже существует
+notes-db  | The files belonging to this database system will be owned by user "postgres".
+notes-db  | This user must also own the server process.
+notes-db  | 
+notes-db  | The database cluster will be initialized with locale "en_US.utf8".
+notes-db  | The default database encoding has accordingly been set to "UTF8".
+notes-db  | The default text search configuration will be set to "english".
+notes-db  | 
+notes-db  | Data page checksums are disabled.
+notes-db  | 
+notes-db  | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+notes-db  | creating subdirectories ... ok
+notes-db  | selecting dynamic shared memory implementation ... posix
+notes-db  | selecting default max_connections ... 100
+notes-db  | selecting default shared_buffers ... 128MB
+notes-db  | selecting default time zone ... Etc/UTC
+notes-db  | creating configuration files ... ok
+notes-db  | running bootstrap script ... ok
+notes-db  | performing post-bootstrap initialization ... ok
+notes-db  | initdb: warning: enabling "trust" authentication for local connections
+notes-db  | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+notes-db  | syncing data to disk ... ok
+notes-db  | 
+notes-db  | 
+notes-db  | Success. You can now start the database server using:
+notes-db  | 
+notes-db  |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+notes-db  | 
+notes-db  | waiting for server to start....2026-11-14 09:01:12.341 UTC [48] LOG:  starting PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+notes-db  | 2026-11-14 09:01:12.341 UTC [48] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+notes-db  | 2026-11-14 09:01:12.342 UTC [51] LOG:  database system was shut down at 2026-11-14 09:01:12 UTC
+notes-db  | 2026-11-14 09:01:12.344 UTC [48] LOG:  database system is ready to accept connections
+notes-db  |  done
+notes-db  | server started
+notes-db  | CREATE DATABASE
+notes-db  | 
+notes-db  | 
+notes-db  | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+notes-db  | 
+notes-db  | waiting for server to shut down....2026-11-14 09:01:12.512 UTC [48] LOG:  received fast shutdown request
+notes-db  | 2026-11-14 09:01:12.512 UTC [48] LOG:  aborting any active transactions
+notes-db  | 2026-11-14 09:01:12.512 UTC [48] LOG:  background worker "logical replication launcher" (PID 54) exited with exit code 1
+notes-db  | 2026-11-14 09:01:12.512 UTC [49] LOG:  shutting down
+notes-db  | 2026-11-14 09:01:12.513 UTC [49] LOG:  checkpoint starting: shutdown immediate
+notes-db  | 2026-11-14 09:01:12.529 UTC [49] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.010 s, sync=0.009 s, total=0.019 s; sync files=301, longest=0.004 s, average=0.001 s; distance=4273 kB, estimate=4273 kB; lsn=0/191F098, redo lsn=0/191F098
+notes-db  | 2026-11-14 09:01:12.531 UTC [48] LOG:  database system is shut down
+notes-db  |  done
+notes-db  | server stopped
+notes-db  | 
+notes-db  | PostgreSQL init process complete; ready for start up.
+notes-db  | 
+notes-db  | 2026-11-14 09:01:12.604 UTC [1] LOG:  starting PostgreSQL 16.15 (Debian 16.15-1.pgdg13+2) on aarch64-unknown-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+notes-db  | 2026-11-14 09:01:12.604 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+notes-db  | 2026-11-14 09:01:12.604 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+notes-db  | 2026-11-14 09:01:12.604 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+notes-db  | 2026-11-14 09:01:12.606 UTC [64] LOG:  database system was shut down at 2026-11-14 09:01:12 UTC
+notes-db  | 2026-11-14 09:01:12.608 UTC [1] LOG:  database system is ready to accept connections

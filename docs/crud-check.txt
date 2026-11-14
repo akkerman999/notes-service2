@@ -1,0 +1,16 @@
+--- health ---
+{"status":"ok","database":"connected","time":"2026-11-14T09:05:12.4187362Z"}
+--- CREATE: добавить заметку ---
+{"id":5,"title":"Купить продукты","content":"Молоко, хлеб, яйца","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:05:12.5123419Z"}
+--- CREATE: ещё одна ---
+{"id":6,"title":"Идеи проекта","content":"Сделать REST API для заметок","category":"учёба","pinned":true,"updatedAt":"2026-11-14T09:05:12.5978321Z"}
+--- READ: список ---
+[{"id":1,"title":"Купить продукты","content":"Молоко, хлеб, яйца","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:01:03.1245123Z"},{"id":2,"title":"Идеи проекта","content":"Сделать REST API для заметок","category":"учёба","pinned":true,"updatedAt":"2026-11-14T09:01:18.7543210Z"},{"id":3,"title":"Список книг","content":"Мастер и Маргарита, 1984","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:02:41.2210345Z"},{"id":4,"title":"План на неделю","content":"Понедельник — лабораторная по Docker","category":"учёба","pinned":false,"updatedAt":"2026-11-14T09:03:07.9108765Z"},{"id":5,"title":"Купить продукты","content":"Молоко, хлеб, яйца","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:05:12.5123419Z"},{"id":6,"title":"Идеи проекта","content":"Сделать REST API для заметок","category":"учёба","pinned":true,"updatedAt":"2026-11-14T09:05:12.5978321Z"}]
+--- READ: одна заметка (id=1) ---
+{"id":1,"title":"Купить продукты","content":"Молоко, хлеб, яйца","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:01:03.1245123Z"}
+--- UPDATE: изменить заметку id=1 ---
+{"id":1,"title":"Купить продукты","content":"Молоко, хлеб, яйца, сыр","category":"личное","pinned":true,"updatedAt":"2026-11-14T09:05:12.8124430Z"}
+--- DELETE: удалить заметку id=2 (ожидается код 204) ---
+HTTP 204
+--- READ: список после изменений ---
+[{"id":1,"title":"Купить продукты","content":"Молоко, хлеб, яйца, сыр","category":"личное","pinned":true,"updatedAt":"2026-11-14T09:05:12.8124430Z"},{"id":3,"title":"Список книг","content":"Мастер и Маргарита, 1984","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:02:41.2210345Z"},{"id":4,"title":"План на неделю","content":"Понедельник — лабораторная по Docker","category":"учёба","pinned":false,"updatedAt":"2026-11-14T09:03:07.9108765Z"},{"id":5,"title":"Купить продукты","content":"Молоко, хлеб, яйца","category":"личное","pinned":false,"updatedAt":"2026-11-14T09:05:12.5123419Z"},{"id":6,"title":"Идеи проекта","content":"Сделать REST API для заметок","category":"учёба","pinned":true,"updatedAt":"2026-11-14T09:05:12.5978321Z"}]
