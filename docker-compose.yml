@@ -1,41 +1,41 @@
-services:
+services:                                    # список сервисов (контейнеров) проекта
   # API на .NET: собирается из Dockerfile в текущей папке
-  api:
-    build: .
-    container_name: notes-api
+  api:                                       # сервис нашего API
+    build: .                                 # собирать образ из Dockerfile в текущей папке
+    container_name: notes-api                # фиксированное имя контейнера
     ports:
       - "8080:8080"            # порт_компьютера:порт_контейнера
-    environment:
+    environment:                             # переменные окружения для API
       # Host=db — это имя сервиса базы данных ниже (не localhost!)
-      - CONNECTION_STRING=Host=db;Port=5432;Database=app;Username=postgres;Password=1234
-    depends_on:
+      - CONNECTION_STRING=Host=db;Port=5432;Database=app;Username=postgres;Password=1234   # строка подключения к БД (хост — имя сервиса db)
+    depends_on:                              # зависимости запуска
       db:
-        condition: service_healthy   # запускать API, когда PostgreSQL уже принимает подключения
+        condition: service_healthy           # запускать API, когда PostgreSQL уже принимает подключения
     networks:
-      - notes-net
+      - notes-net                            # подключаем API к общей сети
 
   # База данных PostgreSQL
-  db:
-    image: postgres:16
-    container_name: notes-db
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=app
+  db:                                        # сервис базы данных
+    image: postgres:16                       # готовый официальный образ PostgreSQL 16
+    container_name: notes-db                 # фиксированное имя контейнера БД
+    environment:                             # настройки БД
+      - POSTGRES_USER=postgres               # пользователь БД
+      - POSTGRES_PASSWORD=1234               # пароль пользователя
+      - POSTGRES_DB=app                      # имя создаваемой базы
     volumes:
-      - db_data:/var/lib/postgresql/data   # данные базы переживают удаление контейнера
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d app"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
+      - db_data:/var/lib/postgresql/data     # данные базы переживают удаление контейнера
+    healthcheck:                             # проверка, что БД готова принимать подключения
+      test: ["CMD-SHELL", "pg_isready -U postgres -d app"]   # команда проверки готовности
+      interval: 5s                           # проверять каждые 5 секунд
+      timeout: 5s                            # ждать ответа не дольше 5 секунд
+      retries: 10                            # после 10 неудач считать контейнер нездоровым
     networks:
-      - notes-net
+      - notes-net                            # подключаем БД к общей сети
 
 # Общая сеть: сервисы обращаются друг к другу по имени (api -> db)
 networks:
-  notes-net:
+  notes-net:                                 # объявляем сеть notes-net
 
 # Named volume, который Docker создаёт и хранит отдельно от контейнеров
 volumes:
-  db_data:
+  db_data:                                   # объявляем именованный том для данных БД
